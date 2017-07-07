@@ -4,6 +4,7 @@
   "description": "a todo list for woosleys!",
   "main": "index.js",
   "scripts": {
+    "create": "webpack",
     "start": "webpack-dev-server --open"
   },
   "babel": {
