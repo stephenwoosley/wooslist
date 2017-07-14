@@ -32,7 +32,7 @@ class ListCollection extends React.Component {
             )
           })}
         </ul>
-        {/* <ListLists isItActive={this.props.activeOrNot} /> */}
+        <button className='button'>New</button>
       </div>
     )
   }
