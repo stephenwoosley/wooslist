@@ -19,20 +19,23 @@ class ListCollection extends React.Component {
   render() {
     let listOfLists = ['Gabriella', 'Stephen', 'Kelly'];
     return (
-      <div>
+      <div className='new'>
         <ul className='lists'>
           {listOfLists.map((list) => {
             return (
               <li
+                className='listOfListsItem'
                 key={list}
                 onClick={this.handleChange}
-                style={{backgroundColor: 'blue', color: 'white', border: '2px solid black', marginTop: '5px'}}>
+              >
                 {list}
               </li>
             )
           })}
         </ul>
-        <button className='button'>New</button>
+        <div className='add-list-btn'>
+          <img className="plus-svg" src="/app/images/plus.png" alt="plus button" />
+        </div>
       </div>
     )
   }

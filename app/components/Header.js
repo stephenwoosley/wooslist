@@ -12,9 +12,13 @@ class Header extends React.Component {
   render() {
     return (
       <div className='header'>
+        {!this.props.showButton &&
+          <div className='add-list-btn'>
+            <img onClick={this.homeClick} className="plus-svg" src="/app/images/home.png" alt="home button" />
+          </div>
+        }
         <div className='header-text'>
-          <h1>wooslist</h1>
-          {!this.props.showButton && <button className='button' onClick={this.homeClick}>Home</button>}
+          <h1 className='main-title'>wooslist</h1>
         </div>
         <div className='date-block'>
           <div className='column-test'>

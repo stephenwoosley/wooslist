@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header.js';
+import todoData from '../data/todos.js'
 
 class ShowModalForm extends React.Component {
   constructor(props) {
@@ -41,13 +42,19 @@ class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: ['wash the dishes', 'take out the trash', 'fold laundry', 'clean your room'],
+      todos: ['test1', 'test2', 'test3', 'test4'],
       showHide: false,
       newToDo: ''
     }
     this.showOrHideForm = this.showOrHideForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  componentDidMount(){
+    // this.setState({
+    //   todos: todo-data.todos
+    // });
+    console.log("Todos are: " + this.state.todos);
   }
   showOrHideForm(){
     {this.state.showHide
@@ -59,24 +66,29 @@ class List extends React.Component {
     this.setState({newToDo: event});
   }
   handleSubmit(event){
-    alert('New ToDo Submitted: ' + this.state.newToDo);
+    // alert('New ToDo Submitted: ' + this.state.newToDo);
     event.preventDefault();
+    this.setState({newToDo: ''});
+    this.setState({todos: this.state.todos.concat(this.state.newToDo)});
   }
   render() {
     return (
-      <div>
+      <div className='new'>
         <ul className='lists'>
           {this.state.todos.map((todo) => {
             return (
               <li
+                className='listOfListsItem'
                 key={todo}
-                style={{backgroundColor: 'blue', color: 'white', border: '2px solid black', marginTop: '5px'}}>
+              >
                 {todo}
               </li>
             )
           })}
         </ul>
-        <button className='button' onClick={this.showOrHideForm}>New</button>
+        <div className='add-list-btn'>
+          <img className="plus-svg" src="/app/images/plus.png" alt="plus button" />
+        </div>
         {this.state.showHide &&
           <ShowModalForm
             currentToDo={this.state.newToDo}

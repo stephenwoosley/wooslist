@@ -2,6 +2,10 @@ body {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Heue,sans-serif;
 }
 
+ul {
+  padding: 0;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -11,12 +15,20 @@ body {
   padding: 0 15% 0 15%;
 }
 
+.new {
+  padding: 0 15% 0 15%;
+}
+
 .header-text {
   display: flex;
   /*display: inline-block;
   text-align: center;*/
   justify-content: center;
-  padding: 20px;
+  padding: 3%;
+}
+
+.main-title {
+  color: #50E3A4;
 }
 
 .date-block {
@@ -44,4 +56,27 @@ body {
   /*display: block;*/
   padding: 7px 0;
   margin: 10px auto;
+}
+
+.listOfListsItem {
+  background-color: #50E3A4;
+  color: white;
+  /*border: 2px solid black;*/
+  margin-top: 5px;
+  padding: 3% 0 3% 0;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 1.5em;
+}
+
+.add-list-btn {
+  text-align: center;
+  margin-top: 10%;
+  /*display: flex;
+  justify-content: center;*/
+
+}
+
+.plus-svg {
+  width: 65px;
 }
