@@ -50,12 +50,7 @@ class List extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount(){
-    // this.setState({
-    //   todos: todo-data.todos
-    // });
-    console.log("Todos are: " + this.state.todos);
-  }
+
   showOrHideForm(){
     {this.state.showHide
       ? this.setState (() => {return {showHide: false}})
@@ -74,6 +69,9 @@ class List extends React.Component {
   render() {
     return (
       <div className='new'>
+        {/* <div className='list-title-div'>
+          <div className='list-title'>Gabriella</div>
+        </div> */}
         <ul className='lists'>
           {this.state.todos.map((todo) => {
             return (
@@ -87,7 +85,13 @@ class List extends React.Component {
           })}
         </ul>
         <div className='add-list-btn'>
-          <img className="plus-svg" src="/app/images/plus.png" alt="plus button" />
+          <input
+            className="plus-svg"
+            type="image"
+            src="/app/images/plus.png"
+            onClick={this.showOrHideForm}
+          />
+          {/* <img className="plus-svg" src="/app/images/plus.png" alt="plus button" /> */}
         </div>
         {this.state.showHide &&
           <ShowModalForm

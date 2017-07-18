@@ -18,14 +18,32 @@ class Header extends React.Component {
           </div>
         }
         <div className='header-text'>
-          <h1 className='main-title'>wooslist</h1>
+          <h1 className='main-title'>Wooslist.{!this.props.showButton &&
+            <span className='slash-list-name'>/Gabriella</span>
+          }</h1>
+
         </div>
-        <div className='date-block'>
-          <div className='column-test'>
-            <span className='big-day'>{moment().format('D')}</span>
-            <span>{moment().format('MMM YYYY')}</span>
+
+        <div className='date-block Grid Aligner'>
+          <div className='big-day'>
+            {moment().format('D')}
           </div>
-          <h3 className='weekday'>{moment().format('dddd')}</h3>
+          {/* ***** Day Month Year ***** */}
+          <div className='Grid-cell date-numbers'>
+
+              <div className='month-year-container'>
+                <div className='month'>
+                  {moment().format('MMM')}
+                </div>
+                <div className='year'>
+                  {moment().format('YYYY')}
+                </div>
+              </div>
+          </div>
+          {/* {!this.props.showButton &&
+            <div className='list-name Grid-cell Aligner-item'>Gabriella</div>
+          } */}
+          <h3 className='weekday Grid-cell'>{moment().format('dddd')}</h3>
         </div>
       </div>
     )
