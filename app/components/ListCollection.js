@@ -28,7 +28,7 @@ class ListCollection extends React.Component {
   }
   handleSubmit(event){
     event.preventDefault();
-    alert('New ToDo Submitted: ' + this.state.newList);
+    // alert('New ToDo Submitted: ' + this.state.newList);
     this.setState({newList: ''});
     this.setState({todoLists: this.state.todoLists.concat(this.state.newList)});
     this.showModalFunc;

@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header.js';
-import todoData from '../data/todos.js'
+import todoData from '../data/todos.js';
+import NewEntry from './NewEntry.js';
 
 class ShowModalForm extends React.Component {
   constructor(props) {
@@ -63,6 +64,7 @@ class List extends React.Component {
   handleSubmit(event){
     // alert('New ToDo Submitted: ' + this.state.newToDo);
     event.preventDefault();
+    // alert('New ToDo Submitted: ' + this.state.newToDo)
     this.setState({newToDo: ''});
     this.setState({todos: this.state.todos.concat(this.state.newToDo)});
   }
@@ -84,6 +86,18 @@ class List extends React.Component {
             )
           })}
         </ul>
+        {this.state.showHide &&
+          <NewEntry
+            submitIt={this.handleSubmit}
+            handleChange={this.handleChange}
+            currentList={this.state.newToDo}
+          />
+          // <ShowModalForm
+          //   currentToDo={this.state.newToDo}
+          //   handleChange={this.handleChange}
+          //   handleSubmit={this.handleSubmit}
+          // />
+        }
         <div className='add-list-btn'>
           <input
             className="plus-svg"
@@ -93,13 +107,6 @@ class List extends React.Component {
           />
           {/* <img className="plus-svg" src="/app/images/plus.png" alt="plus button" /> */}
         </div>
-        {this.state.showHide &&
-          <ShowModalForm
-            currentToDo={this.state.newToDo}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-          />
-        }
       </div>
     )
   }
