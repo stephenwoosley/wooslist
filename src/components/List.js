@@ -71,15 +71,17 @@ class List extends React.Component {
             currentList={this.state.newToDo}
           />
         }
-        <div className='add-list-btn'>
-          {/* clicking image will run func that flips showForm to show form */}
-          <input
-            className="plus-svg"
-            type="image"
-            src={require ('./images/plus.png')}
-            onClick={this.showOrHideForm}
-          />
-        </div>
+        {!this.state.showForm &&
+          <div className='add-list-btn'>
+            {/* clicking image will run func that flips showForm to show form */}
+            <input
+              className="plus-svg"
+              type="image"
+              src={require ('./images/plus.png')}
+              onClick={this.showOrHideForm}
+            />
+          </div>
+        }      
       </div>
     )
   }

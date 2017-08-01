@@ -2,7 +2,7 @@ import React from 'react';
 import NewEntry from './NewEntry.js';
 import Close from 'react-icons/lib/md/close';
 import Edit from 'react-icons/lib/md/edit';
-
+import fire from '../fire';
 
 
 class ListCollection extends React.Component {
@@ -12,14 +12,29 @@ class ListCollection extends React.Component {
     super(props);
     this.handleViewChange = this.handleViewChange.bind(this);
     this.showFormFunc = this.showFormFunc.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleTodoFirebaseAdd = this.handleTodoFirebaseAdd.bind(this);
+    // this.addMessage = this.addMessage.bind(this);
 
     this.state = {
       showForm: false,
-      todoLists: ['Gabriella\'s Morning List', 'Kelly\'s To-Do List', 'Stephen\'s Projects', 'Gabriella\'s To-Do List'],
-      newList: ''
+      newList: '',
+      todoLists: [],
     };
+  }
+
+  handleTodoFirebaseAdd() {
+    console.log('newList inside firebase handler is: ' + this.state.newList)
+    let newOne = {
+      id: this.state.todoLists.length + 1,
+      name: this.state.newList,
+    };
+    let newTodoKey = fire.database().ref().child('samples').push().key;
+    let updates = {};
+    updates['/samples/' + newTodoKey] = newOne;
+    this.setState({newList: ''});
+    return fire.database().ref().update(updates)
   }
 
   // will toggle list view
@@ -36,33 +51,44 @@ class ListCollection extends React.Component {
     }
   }
 
-  // when submit is clicked, add the newList item to the todoLists array and hide form
-  handleSubmit(event){
-    event.preventDefault();
-    this.setState({newList: ''});
-    this.setState({todoLists: this.state.todoLists.concat(this.state.newList)});
-    this.showFormFunc;
-  }
-
   // set newList state to equal the text input entered by the user
   handleChange(event){
     this.setState({newList: event});
   }
-  // console out the contents of the list upon page load
-  componentDidMount(){
-    console.log("Lists are: " + this.state.todoLists);
+
+  componentWillMount() {
+    let listCollectionRef = fire.database().ref().child('samples');
+    //fire.database().ref().child('samples')
+    listCollectionRef.orderByKey().limitToLast(8).on('child_added', snapshot => {
+      let fbValSnap = snapshot.val();
+      snapshot.forEach(childSnapshot => {
+        let key = childSnapshot.key;
+        let childData = childSnapshot.val();
+        let text = childData.text;
+        console.log('childSnapshot.key name is');
+        console.log(key);
+        console.log('childSnapshot.val().name is:');
+        console.log(childData);
+        //this (finally) sets the todoLists state to what's in the Firebase DB.
+        this.setState({todoLists: this.state.todoLists.concat(childData)})
+      })
+      console.log("Firebase snapshot.val() at samples level is: ");
+      console.log(fbValSnap);
+      console.log("Lists are: " + this.state.todoLists);
+    })
   }
+
 
   render() {
     return (
       <div className='new'>
         <ul className='lists'>
           {/* map through contents of todoLists and show li for each item */}
-          {this.state.todoLists.map((list) => {
+          {this.state.todoLists.map((list, i) => {
             return (
               <li
                 className='listOfListsItem'
-                key={list}
+                key={i}
                 onClick={this.handleViewChange}
               >
                 <div className='list-icon-left'>
@@ -82,17 +108,21 @@ class ListCollection extends React.Component {
               submitIt={this.handleSubmit}
               handleChange={this.handleChange}
               currentList={this.state.newList}
+              firebaseAdd={this.handleTodoFirebaseAdd}
+              // addMessage={this.addMessage}
           />
         }
-        <div className='add-list-btn'>
-          {/* clicking image will run func that flips showForm to show form */}
-          <img
-            className="plus-svg"
-            src={require ('./images/plus.png')}
-            alt="plus button"
-            onClick={this.showFormFunc}
-          />
-        </div>
+        {!this.state.showForm &&
+          <div className='add-list-btn'>
+            {/* clicking image will run func that flips showForm to show form */}
+            <img
+              className="plus-svg"
+              src={require ('./images/plus.png')}
+              alt="plus button"
+              onClick={this.showFormFunc}
+            />
+          </div>
+        }
       </div>
     )
   }
