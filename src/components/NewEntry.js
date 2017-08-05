@@ -4,18 +4,19 @@ class NewEntry extends React.Component {
   constructor(props) {
     super(props);
     this.handleTextChange = this.handleTextChange.bind(this);
-    this.handleToDoSubmit = this.handleToDoSubmit.bind(this);
+    // this.handleToDoSubmit = this.handleToDoSubmit.bind(this);
     this.firebaseAdd = this.firebaseAdd.bind(this);
   }
-  handleToDoSubmit(e){
-    this.props.submitIt(e);
-  }
+  // handleToDoSubmit(e){
+  //   this.props.submitIt(e);
+  // }
   handleTextChange(e){
     this.props.handleChange(e.target.value);
   }
   firebaseAdd(e){
     e.preventDefault();
     this.props.firebaseAdd(this.props.currentList)
+    console.log("firebase add has run");
   }
 
   render() {
