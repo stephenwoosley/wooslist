@@ -1,6 +1,38 @@
 import React, { Component } from 'react';
 import fire from '../fire';
 
+// Edit || ITEM || Delete
+
+class EditableItemContent extends React.Component {
+  constructor (props) {
+    super(props);
+  }
+  render() {
+    return (
+      <form onSubmit={ this.handleUpdateItem }>
+        <input
+          className="listOfListsItemText"
+          id={this.props.dbkey + 'itemname'}
+          onChange={ this.itemChange }
+          value={ this.state.text }
+          name="text"
+        />
+      </form>
+    );
+  }
+}
+
+class UneditableItemContent extends React.Component {
+  constructor (props) {
+    super(props);
+  }
+  render() {
+    return (
+
+    );
+  }
+}
+
 class UpdateableItem extends Component {
   constructor (props) {
     super(props);
@@ -33,6 +65,10 @@ class UpdateableItem extends Component {
 
   render(){
     return (
+      {this.state.editMode
+        ? <EditableItemContent />
+        : <UneditableItemContent />
+      }
           <form onSubmit={ this.handleUpdateItem }>
             <input
               className="listOfListsItemText"
