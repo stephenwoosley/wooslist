@@ -6,6 +6,12 @@ import fire from '../fire';
 class EditableItemContent extends React.Component {
   constructor (props) {
     super(props);
+    this.state = {
+      text: props.text,
+    }
+  }
+  itemChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
   }
   render() {
     return (
@@ -28,7 +34,7 @@ class UneditableItemContent extends React.Component {
   }
   render() {
     return (
-
+      console.log(this)
     );
   }
 }
@@ -36,14 +42,14 @@ class UneditableItemContent extends React.Component {
 class UpdateableItem extends Component {
   constructor (props) {
     super(props);
-    this.state = {
-      text: props.text,
-      edit: true
-    };
     this.dbListCollectionItems = fire.database().ref().child('ListCollectionItems');
     this.itemChange = this.itemChange.bind(this);
     this.handleUpdateItem = this.handleUpdateItem.bind(this);
     this.remove = this.remove.bind(this);
+    this.state = {
+      text: props.text,
+      edit: true
+    };
   }
 
   itemChange(e) {
@@ -64,13 +70,15 @@ class UpdateableItem extends Component {
   }
 
   render(){
+    // var _this = this;
     return (
-      {this.state.editMode
+      <div>
+      {this.state.edit
         ? <EditableItemContent />
         : <UneditableItemContent />
       }
-          <form onSubmit={ this.handleUpdateItem }>
-            <input
+           <form onSubmit={ this.handleUpdateItem }>
+             <input
               className="listOfListsItemText"
               id={this.props.dbkey + 'itemname'}
               onChange={ this.itemChange }
@@ -78,7 +86,8 @@ class UpdateableItem extends Component {
               name="text"
             />
           </form>
-    );
+      </div>
+    )
   }
 }
 

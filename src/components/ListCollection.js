@@ -112,6 +112,8 @@ class ListCollection extends React.Component {
           {this.state.todoLists.map((list, i) => {
             return (
               // UI for List Collection Items
+              // put li inside a component and attach edited state to the component and render based on edited state
+              // create an edit function to facilitate firebase updates
               <li
                 key={ list ['.key']}
                 className='listOfListsItem'
