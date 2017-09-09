@@ -103,6 +103,22 @@ ul {
   list-style-type: none;
 }
 
+.listOfListsItemText {
+  background-color: #50E3A4;
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+  box-sizing: border-box;
+  box-shadow: none;
+  -webkit-appearance: none;
+  outline: none;
+  /*padding: 0px;*/
+  border-width: 0px;
+  border-style: none;
+  border-color: none;
+  border-image: none;
+}
+
 .add-list-btn {
   text-align: center;
   margin-top: 2%;
@@ -225,20 +241,18 @@ and (min-width : 321px) {
 @media only screen
 and (max-width : 320px) {
   /* Styles */
-  /*.listOfListsItem {
-    font-size: 1em;
-  }
-  .new, .header {
-    padding: 0 5% 0 5%;
-  }
-  .big-day {
-    font-size: 2em;
-  }*/
   .new {
     padding: 0 5% 0 5%;
   }
   .header {
     padding: 2.5% 10% 0 10%;
+  }
+}
+
+@media only screen
+and (max-width : 576px) {
+  .listOfListsItem{
+    font-size: 1em;
   }
 }
 
