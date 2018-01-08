@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import fire from '../fire';
 
-// Edit || ITEM || Delete
-
 class EditableItemContent extends React.Component {
   constructor (props) {
     super(props);
@@ -70,7 +68,6 @@ class UpdateableItem extends Component {
   }
 
   render(){
-    // var _this = this;
     return (
       <div>
       {this.state.edit

@@ -4,9 +4,6 @@ import ListCollection from './ListCollection';
 import List from './List';
 import '../css/App.css';
 
-
-// import fire from '../fire';
-
 class App extends Component {
   // constructor takes props, binds function and declares state
   constructor(props) {
