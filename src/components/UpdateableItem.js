@@ -9,16 +9,16 @@ class EditableItemContent extends React.Component {
     }
   }
   itemChange(e) {
-    this.setState({ [e.target.name]: e.target.value })
+    this.setState({[e.target.name]: e.target.value})
   }
   render() {
     return (
-      <form onSubmit={ this.handleUpdateItem }>
+      <form onSubmit={this.handleUpdateItem}>
         <input
           className="listOfListsItemText"
           id={this.props.dbkey + 'itemname'}
-          onChange={ this.itemChange }
-          value={ this.state.text }
+          onChange={this.itemChange}
+          value={this.state.text}
           name="text"
         />
       </form>
@@ -51,7 +51,7 @@ class UpdateableItem extends Component {
   }
 
   itemChange(e) {
-    this.setState({ [e.target.name]: e.target.value })
+    this.setState({[e.target.name]: e.target.value})
   }
 
   handleUpdateItem(e) {
@@ -74,12 +74,12 @@ class UpdateableItem extends Component {
         ? <EditableItemContent />
         : <UneditableItemContent />
       }
-           <form onSubmit={ this.handleUpdateItem }>
+           <form onSubmit={this.handleUpdateItem}>
              <input
               className="listOfListsItemText"
               id={this.props.dbkey + 'itemname'}
-              onChange={ this.itemChange }
-              value={ this.state.text }
+              onChange={this.itemChange}
+              value={this.state.text}
               name="text"
             />
           </form>
