@@ -8,6 +8,7 @@ var UserSchema = new Schema({
   // `name` must be unique and of type String
   name: {
     type: String,
+    unique: true
   },
   // `todos` is an array that stores ObjectIds
   // The ref property links these ObjectIds to the Todo model
