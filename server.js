@@ -22,26 +22,10 @@ mongoose.connect("mongodb://localhost/tododb", {
   useMongoClient: true
 });
 
-// on server start, create/save a new User doc. unique rule in schema prevents duplicate users
-// db.User.create({ name: "Stephen Woosley" })
-//   .then(function(dbUser) {
-//     console.log(dbUser);
-//   })
-//   .catch(function(err) {
-//     console.log(err.message);
-//   });
+
 
 // Routes
 
-app.get("/", function(req, res) {
-  db.Users.find({})
-    .then(function(dbUser) {
-      res.json(dbUser)
-    })
-    .catch(function(err){
-      res.json(err);
-    });
-})
 
 // Retrieve all Todos from the db
 app.get("/todos", function(req, res) {
