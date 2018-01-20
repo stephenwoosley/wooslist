@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 // Using the Schema constructor, create a new TodoSchema object
 var TodoSchema = new Schema({
   completed: { type: Boolean, default: false },
-  text: String
+  text: { type: String, default: 'empty todo' }
 });
 
 // This creates our model from the above schema, using mongoose's model method

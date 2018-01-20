@@ -19,7 +19,7 @@ var List_of_Todos_Schema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var List_of_Todos = mongoose.model("List_of_Todos_Schema", List_of_Todos_Schema);
+var List_of_Todos = mongoose.model("List_of_Todos", List_of_Todos_Schema);
 
 // Export the List_of_Todos_Schema model
 module.exports = List_of_Todos;
