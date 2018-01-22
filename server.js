@@ -83,10 +83,21 @@ app.get("/users", function(req, res) {
 });
 
 app.post("/submitTodo", (req, res) => {
-  console.log("request.body from submitTodo is: " + req.body.text)
+  console.log("Todo sent from page: " + req.body.text)
   db.Todo.create(req.body)
     .then((dbTodo) => {
       res.json(dbTodo)
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+})
+
+app.post("/submitUser", (req, res) => {
+  console.log("User sent from page: " + req.body.name)
+  db.User.create(req.body)
+    .then((dbUser) => {
+      res.json(dbUser)
     })
     .catch(function(err) {
       res.json(err);

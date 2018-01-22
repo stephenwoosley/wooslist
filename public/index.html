@@ -26,10 +26,15 @@
     <form action="http://127.0.0.1:8000/submitTodo" method="post">
       <h1>Hi User!</h1>
       <h2>Enter a Todo!</h2>
-        <input type="text" name="text" placeholder="todo goes here"></input>
-        <input type="submit">
-        <a href="/todos">See your notes!</a>
-        <a href="/users">See all users!</a>
-      </form>
+      <input type="text" name="text" placeholder="todo goes here"></input>
+      <input type="submit">
+    </form>
+    <form action="http://127.0.0.1:8000/submitUser" method="post">
+      <h2>Create a New User!</h2>
+      <input type="text" name="name" placeholder="user goes here"></input>
+      <input type="submit">
+    </form>
+    <a href="/todos">See your notes!</a>
+    <a href="/users">See all users!</a>
   </body>
 </html>
