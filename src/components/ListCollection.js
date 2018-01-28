@@ -212,6 +212,21 @@ export default ListCollection;
 //   })
 // }
 
+// `string text ${expression} string text`
+
+// let objLocation = app.newsModule.articles
+
+// `${objLocation}.x`
+
+// 'string text ' + expression + ' string text'
+
+
+
+// x is a string
+// x should represent an object of the same name
+
+// retrieve an object where the key is = x
+
 
 {/* <li
   className='listOfListsItem'
